@@ -1,25 +1,50 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <nav className="container mx-auto flex items-center justify-between py-5">
-      <h1 className="text-xl font-bold">
-        
+      
+      {/* Logo / Name */}
+      <h1 className="text-xl font-bold text-white">
         Thineshkaran
       </h1>
 
-      <ul className="hidden md:flex gap-8 text-sm text-slate-400">
-        {["Home", "Services", "Portfolio", "About", "Contact"].map(item => (
-          <li
-            key={item}
-            className="hover:text-white cursor-pointer"
-          >
-            {item}
+      {/* Navigation */}
+      <ul className="hidden md:flex gap-8 text-sm">
+        {navItems.map((item) => (
+          <li key={item.name}>
+            <NavLink
+              to={item.path}
+              className={({ isActive }) =>
+                `cursor-pointer transition ${
+                  isActive
+                    ? "text-orange-500"
+                    : "text-slate-400 hover:text-white"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
           </li>
         ))}
       </ul>
 
-      <button className="bg-orange-500 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-orange-400">
+      {/* CTA */}
+      <NavLink
+        to="/contact"
+        className="bg-orange-500 text-black px-5 py-2 rounded-full text-sm font-medium hover:bg-orange-400 transition"
+      >
         Let’s Talk
-      </button>
+      </NavLink>
+
     </nav>
   );
 };
