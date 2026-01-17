@@ -1,21 +1,21 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./pages/home.jsx";
-import Services from "./pages/services.jsx";
-import Portfolio from "./pages/portfolio.jsx";
-import Contact from "./pages/contact.jsx";
+import Home from "./pages/Home/index";
+import Header from "./components/base/Header/index.jsx";
+import Footer from "./components/base/Footer/index.jsx";
+import About from "./pages/About/index.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 export default function App() {
   return (
     <>
-      <Navbar />
-
+     <ScrollToTop />
+    <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
+
+    <Footer />
     </>
   );
 }
